@@ -1,23 +1,12 @@
-// my_algorithm.h
-#pragma once
+#include <iostream>
 #include <vector>
-#include <cmath>
+#include <fstream>
 #include <functional>
-
-void bubble_sort(std::vector<int>& data) {
-    int n = data.size();
-    for (int i = 0; i < n-1; i++) {
-        for (int j = 0; j < n-i-1; j++) {
-            if (data[j] > data[j+1]) {
-                std::swap(data[j], data[j+1]);
-            }
-        }
-    }
-}
+using namespace std;
 
 void Insertion_sort(std::vector<int>& arr){
     int length = arr.size();
-    for(int j = 1; j < length; j++){
+    for(int j = 2; j < length; j++){
         int key = arr[j];
         int i = j - 1;
         while(i >= 0 && arr[i] > key){
@@ -71,4 +60,14 @@ void Merge_sort(std::vector<int>& arr){
         }
     };
     helper(0, arr.size());
+}
+
+int main(){
+    std::vector<int> arr({1, 3, 9, 2, 5, 4});
+    Merge_sort(arr);
+    for(int i : arr){
+        std::cout << i;
+    }
+    std::cout << std::endl;
+    return 0;
 }
