@@ -33,25 +33,16 @@ int main() {
     std::ofstream outfile("../data/results.csv");
     outfile << "algorithm,parameter,time_us\n";
     
-    int low_bound = 100;
-    int up_bound = 10000;
-    int step = 100;
-    // 测试bubble_sort在不同输入大小下的性能
-    // for (size_t size = low_bound; size <= up_bound; size += step) {
-    //     auto data = generate_random_vector(size);
-    //     std::vector<int> int_data(data.begin(), data.end());
-        
-    //     long long time_taken = measure_time(bubble_sort, int_data);
-        
-    //     outfile << "bubble_sort," << size << "," << time_taken << "\n";
-    // }
+    int low_bound = 10;
+    int up_bound = 100;
+    int step = 10;
 
     // 测试Insertion_sort在不同输入大小下的性能
     for (size_t size = low_bound; size <= up_bound; size += step) {
         auto data = generate_random_vector(size);
         std::vector<int> int_data(data.begin(), data.end());
         
-        long long time_taken = measure_time(Insertion_sort, int_data);
+        long long time_taken = measure_time(Insertion_sort<int>, int_data);
         
         outfile << "Insertion_sort," << size << "," << time_taken << "\n";
     }
@@ -61,9 +52,19 @@ int main() {
         auto data = generate_random_vector(size);
         std::vector<int> int_data(data.begin(), data.end());
         
-        long long time_taken = measure_time(Merge_sort, int_data);
+        long long time_taken = measure_time(Merge_sort<int>, int_data);
         
         outfile << "Merge_sort," << size << "," << time_taken << "\n";
+    }
+
+    // 测试Quick_sort在不同输入大小下的性能
+    for (size_t size = low_bound; size <= up_bound; size += step) {
+        auto data = generate_random_vector(size);
+        std::vector<int> int_data(data.begin(), data.end());
+        
+        long long time_taken = measure_time(Quick_sort_naive<int>, int_data);
+        
+        outfile << "Quick_sort_naive," << size << "," << time_taken << "\n";
     }
     
     outfile.close();

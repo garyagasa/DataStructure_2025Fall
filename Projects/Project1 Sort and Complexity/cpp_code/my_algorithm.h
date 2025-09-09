@@ -2,6 +2,7 @@
 #pragma once
 #include <vector>
 #include <cmath>
+#include <algorithm>
 #include <functional>
 
 template<typename T>
@@ -35,7 +36,7 @@ void Insertion_sort(std::vector<T>& arr){
 template<typename T>
 void Merge_sort(std::vector<T>& arr){
     std::function<void(int, int)> helper = [&](int left, int right) -> void{
-        if(left == right - 1 || left == right){
+        if(left >= right - 1){
             return;
         }
         
@@ -80,8 +81,30 @@ void Merge_sort(std::vector<T>& arr){
 
 // Question3: Quick Sort
 template<typename T>
-void Quick_sort(std::vector<T>& arr){
-// To-Do: Implement the algorithm of quick sort
+void Quick_sort_naive(std::vector<T>& arr){
+
+    std::function<void(int, int)> helper = [&](int left, int right) -> void{
+        // right is exclusive
+        if(left >= right - 1){
+            return;
+        }
+
+        // partition, choose arr[left] to be the pivot
+        T pivot = arr[left];
+        int last_p = right- 1;
+        for(int i = left + 1; i < last_p; i++){
+            if(arr[i] > pivot){
+                std::swap(arr[i], arr[last_p]);
+                last_p--;
+            }
+        }
+        std::swap(arr[left], arr[last_p]);
+
+        helper(left, last_p);
+        helper(last_p + 1, right);
+    };
+    
+    helper(0, arr.size());
 }
 
 // Question4: Improved Sort
