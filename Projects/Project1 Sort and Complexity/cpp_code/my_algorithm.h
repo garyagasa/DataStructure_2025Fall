@@ -34,7 +34,7 @@ void Insertion_sort(std::vector<T>& arr){
 
 // Question2: Merge Sort
 template<typename T>
-void Merge_sort(std::vector<T>& arr){
+void Merge_sort_1(std::vector<T>& arr){
     std::function<void(int, int)> helper = [&](int left, int right) -> void{
         if(left >= right - 1){
             return;
@@ -79,6 +79,49 @@ void Merge_sort(std::vector<T>& arr){
     helper(0, arr.size());
 }
 
+template<typename T>
+void Merge_sort_2(std::vector<T>& arr){
+    std::function<void(int, int)> helper = [&](int left, int right) -> void{
+        if(left == right - 1 || left == right){
+            return;
+        }
+
+        int middle = (left + right) / 2;
+        // devide
+        helper(left, middle);
+        helper(middle, right);
+        
+        std::vector<T> left_part(arr.begin() + left, arr.begin() + middle);
+        std::vector<T> right_part(arr.begin() + middle, arr.begin() + right);
+        
+        // conquer
+        int p1 = 0, p2 = 0, p = left;
+        while(p1 < middle - left || p2 < right - middle){
+            // left used up
+            if(p1 == middle - left){
+                arr[p] = right_part[p2];
+                p2++;
+            }
+            // right used up
+            else if(p2 == right - middle){
+                arr[p] = left_part[p1];
+                p1++;
+            }
+            // both not used up
+            else if(left_part[p1] < right_part[p2]){
+                arr[p] = left_part[p1];
+                p1++;
+            }
+            else{
+                arr[p] = right_part[p2];
+                p2++; 
+            }
+            p++;   
+        }
+    };
+    helper(0, arr.size());
+ }
+
 // Question3: Quick Sort
 template<typename T>
 void Quick_sort_naive(std::vector<T>& arr){
@@ -91,17 +134,27 @@ void Quick_sort_naive(std::vector<T>& arr){
 
         // partition, choose arr[left] to be the pivot
         T pivot = arr[left];
-        int last_p = right- 1;
-        for(int i = left + 1; i < last_p; i++){
-            if(arr[i] > pivot){
-                std::swap(arr[i], arr[last_p]);
-                last_p--;
+
+        int small_point = left + 1;
+        int big_point = right - 1;
+        /**We can guarantee that:
+         * When index < small_point, elements must be smaller than the pivot
+         * When index > big_point, elements must be bigger than the pivot
+        */
+        while(small_point <= big_point){
+            if(arr[small_point] < pivot){
+                small_point++;
+            }
+            else{
+                std::swap(arr[small_point], arr[big_point]);
+                big_point--;
             }
         }
-        std::swap(arr[left], arr[last_p]);
 
-        helper(left, last_p);
-        helper(last_p + 1, right);
+        std::swap(arr[left], arr[small_point - 1]);
+
+        helper(left, small_point - 1);
+        helper(small_point, right);
     };
     
     helper(0, arr.size());

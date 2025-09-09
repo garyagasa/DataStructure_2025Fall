@@ -6,13 +6,13 @@
 #include <random>
 #include <fstream>
 
-// 生成随机向量
-std::vector<double> generate_random_vector(size_t size, double min = 0.0, double max = 1.0) {
+// 生成随机整数向量
+std::vector<int> generate_random_vector(size_t size, int min = 0, int max = 100000) {
     std::random_device rd;
     std::mt19937 gen(rd());
-    std::uniform_real_distribution<> dis(min, max);
+    std::uniform_int_distribution<> dis(min, max);
     
-    std::vector<double> result(size);
+    std::vector<int> result(size);
     for (size_t i = 0; i < size; ++i) {
         result[i] = dis(gen);
     }
@@ -29,42 +29,49 @@ long long measure_time(Func func, Args&&... args) {
 }
 
 int main() {
-    // 测试不同输入大小的执行时间
+    // 输出到 CSV 文件
     std::ofstream outfile("../data/results.csv");
     outfile << "algorithm,parameter,time_us\n";
     
     int low_bound = 10;
-    int up_bound = 100;
-    int step = 10;
+    int up_bound = 500;
+    int step = 1;
+    int repeat_time = 10;
 
-    // 测试Insertion_sort在不同输入大小下的性能
+    // 测试 Insertion_sort
     for (size_t size = low_bound; size <= up_bound; size += step) {
-        auto data = generate_random_vector(size);
-        std::vector<int> int_data(data.begin(), data.end());
-        
-        long long time_taken = measure_time(Insertion_sort<int>, int_data);
-        
-        outfile << "Insertion_sort," << size << "," << time_taken << "\n";
+        long long avgtime = 0;
+        for(int time = 0; time < repeat_time; time++){
+            auto data = generate_random_vector(size);
+            long long time_taken = measure_time(Insertion_sort<int>, data);
+            avgtime += time_taken;
+        }
+        avgtime /= repeat_time;
+        outfile << "Insertion_sort," << size << "," << avgtime << "\n";
     }
 
-    // 测试Merge_sort在不同输入大小下的性能
-    for (size_t size = low_bound; size <= up_bound; size += step) {
-        auto data = generate_random_vector(size);
-        std::vector<int> int_data(data.begin(), data.end());
-        
-        long long time_taken = measure_time(Merge_sort<int>, int_data);
-        
-        outfile << "Merge_sort," << size << "," << time_taken << "\n";
-    }
+//    // 测试 Merge_sort
+//     for (size_t size = low_bound; size <= up_bound; size += step) {
+//         long long avgtime = 0;
+//         for(int time = 0; time < repeat_time; time++){
+//             auto data = generate_random_vector(size);
+//             long long time_taken = measure_time(Merge_sort_1<int>, data);
+//             avgtime += time_taken;
+//         }
+//         avgtime /= repeat_time;
+//         outfile << "Merge_sort," << size << "," << avgtime << "\n";
+//     }
 
-    // 测试Quick_sort在不同输入大小下的性能
+    // 测试 Quick_sort
     for (size_t size = low_bound; size <= up_bound; size += step) {
-        auto data = generate_random_vector(size);
-        std::vector<int> int_data(data.begin(), data.end());
-        
-        long long time_taken = measure_time(Quick_sort_naive<int>, int_data);
-        
-        outfile << "Quick_sort_naive," << size << "," << time_taken << "\n";
+        long long avgtime = 0;
+        for(int time = 0; time < repeat_time; time++){
+            auto data = generate_random_vector(size);
+            long long time_taken = measure_time(Quick_sort_naive<int>, data);
+            avgtime += time_taken;
+        }
+        avgtime /= repeat_time;
+        outfile << "Quick_sort," << size << "," << avgtime << "\n";
     }
     
     outfile.close();
