@@ -4,7 +4,8 @@
 #include <cmath>
 #include <functional>
 
-void bubble_sort(std::vector<int>& data) {
+template<typename T>
+void bubble_sort(std::vector<T>& data) {
     int n = data.size();
     for (int i = 0; i < n-1; i++) {
         for (int j = 0; j < n-i-1; j++) {
@@ -15,10 +16,12 @@ void bubble_sort(std::vector<int>& data) {
     }
 }
 
-void Insertion_sort(std::vector<int>& arr){
+// Question1: Insertion Sort
+template<typename T>
+void Insertion_sort(std::vector<T>& arr){
     int length = arr.size();
     for(int j = 1; j < length; j++){
-        int key = arr[j];
+        T key = arr[j];
         int i = j - 1;
         while(i >= 0 && arr[i] > key){
             arr[i + 1] = arr[i];
@@ -28,13 +31,15 @@ void Insertion_sort(std::vector<int>& arr){
     }
 }
 
-void Merge_sort(std::vector<int>& arr){
+// Question2: Merge Sort
+template<typename T>
+void Merge_sort(std::vector<T>& arr){
     std::function<void(int, int)> helper = [&](int left, int right) -> void{
         if(left == right - 1 || left == right){
             return;
         }
         
-        std::vector<int> temp(arr.size()); // temporary vector to store the element
+        std::vector<T> temp(arr.size()); // temporary vector to store the element
 
         int middle = (left + right) / 2;
         // devide
@@ -71,4 +76,16 @@ void Merge_sort(std::vector<int>& arr){
         }
     };
     helper(0, arr.size());
+}
+
+// Question3: Quick Sort
+template<typename T>
+void Quick_sort(std::vector<T>& arr){
+// To-Do: Implement the algorithm of quick sort
+}
+
+// Question4: Improved Sort
+template<typename T>
+void Improved_Sort(std::vector<T>& arr, int k){
+// To-Do: Implement the algorithm combining the quick sort and insertion sort
 }
