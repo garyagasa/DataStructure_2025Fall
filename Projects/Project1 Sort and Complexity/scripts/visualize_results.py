@@ -52,20 +52,9 @@ def load_and_visualize():
     plt.tight_layout()
     plt.savefig('../data/execution_time_plot.png', dpi=300, bbox_inches='tight')
     plt.show()
+
     
-    # 创建第二个图：使用seaborn的回归图
-    plt.figure(figsize=(12, 8))
-    sns.lmplot(x='parameter', y='time_us', data=df, hue='algorithm', 
-               ci=None, scatter_kws={'alpha':0.6, 's':15}, 
-               line_kws={'linewidth':2})
-    plt.xlabel('参数值（输入大小）')
-    plt.ylabel('执行时间（微秒）')
-    plt.title('算法执行时间随参数变化趋势')
-    plt.grid(True, linestyle='--', alpha=0.7)
-    plt.savefig('../data/execution_time_regression.png', dpi=300, bbox_inches='tight')
-    plt.show()
-    
-    # 创建第三个图：使用子图展示每个算法的箱线图
+    # 创建第二个图：使用子图展示每个算法的箱线图
     fig, axes = plt.subplots(1, len(algorithms), figsize=(15, 5))
     
     if len(algorithms) == 1:
