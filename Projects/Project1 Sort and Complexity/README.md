@@ -54,3 +54,10 @@ Shiqiang Wu 24300810019@m.fudan.edu.cn
    ```
 #### III. Operation Time of Different Algorithms and Reflection
 ![execution time plot](data/execution_time_plot.png)
+figure1: execution time plot
+
+![time boxplot](data/execution_time_boxplot.png)
+figure2: time bloxplot 
+
+![time regression](data/execution_time_regression1.png)
+figure3: time regression plot and comparison of different algorithm(10-500)
