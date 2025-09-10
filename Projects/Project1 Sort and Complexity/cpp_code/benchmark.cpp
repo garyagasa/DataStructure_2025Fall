@@ -33,9 +33,9 @@ int main() {
     std::ofstream outfile("../data/results.csv");
     outfile << "algorithm,parameter,time_us\n";
     
-    int low_bound = 1000;
-    int up_bound = 50000;
-    int step = 1000;
+    int low_bound = 10;
+    int up_bound = 700;
+    int step = 1;
     int repeat_time = 10;
 
     // 测试 Insertion_sort
@@ -74,6 +74,18 @@ int main() {
         outfile << "Quick_sort," << size << "," << avgtime << "\n";
     }
     
+    // 测试 Improved_sort
+    for (size_t size = low_bound; size <= up_bound; size += step) {
+        long long avgtime = 0;
+        for(int time = 0; time < repeat_time; time++){
+            auto data = generate_random_vector(size);
+            long long time_taken = measure_time(Improved_Sort<int>, data);
+            avgtime += time_taken;
+        }
+        avgtime /= repeat_time;
+        outfile << "Improved_sort," << size << "," << avgtime << "\n";
+    }
+
     outfile.close();
     return 0;
 }

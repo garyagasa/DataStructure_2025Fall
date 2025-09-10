@@ -78,6 +78,7 @@ figure6: time regression plot and comparison of different algorithm(1000-50000)
 
    Insertion sort:
    $$y= 0.031649x - 2.31$$
+   
    Quick sort:
    $$y= 0.028215x - 1.11$$
 

@@ -4,6 +4,7 @@
 #include <cmath>
 #include <algorithm>
 #include <functional>
+#define K_SET 5
 
 template<typename T>
 void bubble_sort(std::vector<T>& data) {
@@ -124,11 +125,11 @@ void Merge_sort_2(std::vector<T>& arr){
 
 // Question3: Quick Sort
 template<typename T>
-void Quick_sort_naive(std::vector<T>& arr){
+void Quick_sort_naive_k(std::vector<T>& arr, int k){
 
     std::function<void(int, int)> helper = [&](int left, int right) -> void{
         // right is exclusive
-        if(left >= right - 1){
+        if(left >= right - k){
             return;
         }
 
@@ -160,8 +161,20 @@ void Quick_sort_naive(std::vector<T>& arr){
     helper(0, arr.size());
 }
 
+template<typename T>
+void Quick_sort_naive(std::vector<T>& arr){
+    Quick_sort_naive_k(arr, 1);
+}
+
 // Question4: Improved Sort
 template<typename T>
-void Improved_Sort(std::vector<T>& arr, int k){
+void Improved_Sort_k(std::vector<T>& arr, int k){
 // To-Do: Implement the algorithm combining the quick sort and insertion sort
+    Quick_sort_naive_k(arr, k);
+    Insertion_sort(arr);
+}
+
+template<typename T>
+void Improved_Sort(std::vector<T>& arr){
+    Improved_Sort_k(arr, K_SET);
 }
