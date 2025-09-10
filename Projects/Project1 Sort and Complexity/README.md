@@ -53,11 +53,20 @@ Shiqiang Wu 24300810019@m.fudan.edu.cn
       python run_benchmarks.py
    ```
 #### III. Operation Time of Different Algorithms and Reflection
-![execution time plot](data/execution_time_plot.png)
-figure1: execution time plot
+![execution time plot1](data/execution_time_plot1.png)
+figure1: execution time plot(10-500)
 
-![time boxplot](data/execution_time_boxplot.png)
-figure2: time bloxplot 
+![time boxplot1](data/execution_time_boxplot1.png)
+figure2: time bloxplot(10-500)
 
-![time regression](data/execution_time_regression1.png)
+![time regression1](data/execution_time_regression1.png)
 figure3: time regression plot and comparison of different algorithm(10-500)
+
+![execution time plot2](data/execution_time_plot2.png)
+figure4: execution time plot(1000-50000)
+
+![time boxplot2](data/execution_time_boxplot2.png)
+figure5: time bloxplot(1000-50000)
+
+![time regression2](data/execution_time_regression2.png)
+figure6: time regression plot and comparison of different algorithm(1000-50000)
