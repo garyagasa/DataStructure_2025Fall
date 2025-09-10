@@ -70,3 +70,16 @@ figure5: time bloxplot(1000-50000)
 
 ![time regression2](data/execution_time_regression2.png)
 figure6: time regression plot and comparison of different algorithm(1000-50000)
+
+1. Compare the performance of Quick sort and Insertion sort(with tiny scale data)
+   In figure 1-3, we compare algorithms with tiny scale data(size range from 10 to 500, step=1), for each size we repeat the experiment with 10 times and get the average result to reduce the randomness error.Notice that in figure3, we use the linear regression to fit the curves of different algorithms.
+
+   Here is the linear fit functions:
+
+   Insertion sort:
+   $$y= 0.031649x - 2.31$$
+   Quick sort:
+   $$y= 0.028215x - 1.11$$
+
+   We then can compute the point where Quick sort outperforms Insertion sort:
+   $$x=349.45$$
