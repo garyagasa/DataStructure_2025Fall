@@ -9,7 +9,7 @@ def load_and_visualize():
     # 确保数据目录存在
     os.makedirs('../data', exist_ok=True)
     
-    # 加载数据
+    # 加载数据(results.csv)
     try:
         df = pd.read_csv('../data/results.csv')
     except FileNotFoundError:
@@ -21,7 +21,7 @@ def load_and_visualize():
     plt.rcParams['font.sans-serif'] = ['SimHei']  # 用来正常显示中文标签
     plt.rcParams['axes.unicode_minus'] = False  # 用来正常显示负号
     
-    # 为每个算法创建子图
+    # 创建第一个图：为每个算法创建子图
     algorithms = df['algorithm'].unique()
     fig, axes = plt.subplots(1, len(algorithms), figsize=(15, 5))
     
@@ -124,6 +124,20 @@ def load_and_visualize():
     plt.grid(True, linestyle='--', alpha=0.7)
     plt.savefig('../data/execution_time_regression.png', dpi=300, bbox_inches='tight')
     plt.show()
+
+    # 加载数据(qs_results.csv)
+    try:
+        df_qs = pd.read_csv('../data/qs_results.csv')
+    except FileNotFoundError:
+        print("结果文件未找到，请先运行C++基准测试程序")
+        return
     
+    sns.lineplot(data=df_qs, x='k_num', y='time_us', marker='o')
+    plt.title('Running time of Improved sort for different k')
+    plt.xlabel('k')
+    plt.ylabel('Operation time')
+    plt.legend(title='Time')
+    plt.show()
+
 if __name__ == "__main__":
     load_and_visualize()

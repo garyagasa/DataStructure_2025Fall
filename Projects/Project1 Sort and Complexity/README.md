@@ -42,10 +42,13 @@ Shiqiang Wu 24300810019@m.fudan.edu.cn
    ```bash
    Merge_sort Int: 0 1 2 2 3 4 5 5 7 8 9 
    Quick_sort Int: 0 1 2 2 3 4 5 5 7 8 9 
+   Improved_sort Int: 0 1 2 2 3 4 5 5 7 8 9 
    Merge_sort Float: 0.4 1.2 1.7 2 2.5 3 3.1 3.3 6.5 8.2 9.1 
    Quick_sort Float: 0.4 1.2 1.7 2 2.5 3 3.1 3.3 6.5 8.2 9.1 
+   Improved_sort Float: 0.4 1.2 1.7 2 2.5 3 3.1 3.3 6.5 8.2 9.1 
    Merge_sort Char: $ A F J K T U _ a b f s 
    Quick_sort Char: $ A F J K T U _ a b f s 
+   Improved_sort Char: $ A F J K T U _ a b f s 
    ```
    + step2: run the test and visualize the operation time
    ```bash

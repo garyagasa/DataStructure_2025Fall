@@ -79,7 +79,7 @@ int main() {
         long long avgtime = 0;
         for(int time = 0; time < repeat_time; time++){
             auto data = generate_random_vector(size);
-            long long time_taken = measure_time(Improved_Sort<int>, data);
+            long long time_taken = measure_time(Improved_Sort_k<int>, data, 120);
             avgtime += time_taken;
         }
         avgtime /= repeat_time;
@@ -87,5 +87,27 @@ int main() {
     }
 
     outfile.close();
+
+    // To-Do: Test Improved sort on different values of k, output to the file "qs_results.csv" 
+    std::ofstream outfile1("../data/qs_results.csv");
+    outfile1 << "k_num,time_us\n";
+    int k_low = 0;
+    int k_high = 600;
+    int k_step = 2;
+    int repeat_time1 = 20;
+    int size = 50000;
+
+    for(int k = k_low; k < k_high; k += k_step){
+        long long avgtime = 0;
+        for(int time = 0; time < repeat_time1; time++){
+            auto data = generate_random_vector(size);
+            long long time_taken = measure_time(Improved_Sort_k<int>, data, k);
+            avgtime += time_taken;
+        }
+        avgtime /= repeat_time1;
+        outfile1 << k << "," << avgtime << "\n";
+    }
+    outfile1.close();
+
     return 0;
 }
