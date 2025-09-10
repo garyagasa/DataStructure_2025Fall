@@ -52,4 +52,5 @@ Shiqiang Wu 24300810019@m.fudan.edu.cn
       cd ../scripts
       python run_benchmarks.py
    ```
-#### III.
+#### III. Operation Time of Different Algorithms and Reflection
+![execution time plot](data/execution_time_plot.png)
