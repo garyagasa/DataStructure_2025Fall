@@ -44,7 +44,7 @@ void Merge_sort_1(std::vector<T>& arr){
         std::vector<T> temp(arr.size()); // temporary vector to store the element
 
         int middle = (left + right) / 2;
-        // devide
+        // divide
         helper(left, middle);
         helper(middle, right);
         
