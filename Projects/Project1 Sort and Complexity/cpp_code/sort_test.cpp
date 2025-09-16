@@ -16,7 +16,7 @@ void printVector(const std::vector<T>& vec, const std::string& name) {
 
 int main(){
     std::vector<int> arr1({1, 3, 9, 2, 5, 4, 0, 8, 7, 5, 2});
-    Merge_sort_2(arr1);
+    Merge_sort_1(arr1);
     printVector(arr1, "Merge_sort Int");
 
     std::vector<int> arr1_1({1, 3, 9, 2, 5, 4, 0, 8, 7, 5, 2});
@@ -40,7 +40,7 @@ int main(){
     printVector(arr2_1, "Improved_sort Float");
 
     std::vector<char> arr3({'F', 'a', 'K', 'J', 'T', 'f', 'U', '_', '$', 'A', 's', 'b'});
-    Merge_sort_2(arr3);
+    Merge_sort_1(arr3);
     printVector(arr3, "Merge_sort Char");
 
     std::vector<char> arr3_1({'F', 'a', 'K', 'J', 'T', 'f', 'U', '_', '$', 'A', 's', 'b'});

@@ -50,17 +50,17 @@ int main() {
         outfile << "Insertion_sort," << size << "," << avgtime << "\n";
     }
 
-//    // 测试 Merge_sort
-//     for (size_t size = low_bound; size <= up_bound; size += step) {
-//         long long avgtime = 0;
-//         for(int time = 0; time < repeat_time; time++){
-//             auto data = generate_random_vector(size);
-//             long long time_taken = measure_time(Merge_sort_1<int>, data);
-//             avgtime += time_taken;
-//         }
-//         avgtime /= repeat_time;
-//         outfile << "Merge_sort," << size << "," << avgtime << "\n";
-//     }
+   // 测试 Merge_sort
+    for (size_t size = low_bound; size <= up_bound; size += step) {
+        long long avgtime = 0;
+        for(int time = 0; time < repeat_time; time++){
+            auto data = generate_random_vector(size);
+            long long time_taken = measure_time(Merge_sort_1<int>, data);
+            avgtime += time_taken;
+        }
+        avgtime /= repeat_time;
+        outfile << "Merge_sort," << size << "," << avgtime << "\n";
+    }
 
     // 测试 Quick_sort
     for (size_t size = low_bound; size <= up_bound; size += step) {

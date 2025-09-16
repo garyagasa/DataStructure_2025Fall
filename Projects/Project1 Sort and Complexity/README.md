@@ -19,6 +19,9 @@ Shiqiang Wu 24300810019@m.fudan.edu.cn
     check the environment
 + data: `csv` file to record the result and some graphs
    + results.csv  
+      operation time of different sort algorithm
+   + qs_results.csv
+      opertation time of **improved sorts** choosing different `k`
    + execution_time_boxplot.png
    + execution_time_plot.png
    + execution_time_regression.png
@@ -87,3 +90,28 @@ figure6: time regression plot and comparison of different algorithm(1000-50000)
 
    We then can compute the point where Quick sort outperforms Insertion sort:
    $$x=349.45$$
+
+   We may assume that if we construct our `improved sort`, we can simply end the quick sort at the scale of `k = 349` or so, and then switch to our insertion sort algorithm. Now let's do experiments to have our assumption examined.
+
+   #### IV. Improved Sort k selection
+   Our implementation of `Improved Sort` is simply a combination of quick sort and insertion sort.
+   ```cpp
+   template<typename T>
+   void Improved_Sort_k(std::vector<T>& arr, int k){
+   // To-Do: Implement the algorithm combining the quick sort and insertion sort
+      Quick_sort_naive_k(arr, k);
+      Insertion_sort(arr);
+   }
+   ```
+   The key problem is the choice of k.
+   We can try different `k` s.The visualization of the results(`qs_results.csv`) is as follows.
+   ![alt text](data/Figure_1_1.png)
+   We can find that when `k=120` or so the operation time is the shortest.This is different from the therotical calculation we made above of about `349`.One explanation may be that when we choose `k`, we not only need to consider the performance of two algorithms, but also need to take the number of subproblems we give to quick sort and the extent of sort in our array then using insertion sort.
+   We then can set `k=120` to compare our improved sort with other algorithms
+
+   #### V.How about Merge Sort?
+   We haven't talk about the `Merge sort` yet, since in the experiment we find that in practice the `Merge sort` can't beat the `Insertion sort` , not to say `Quick_sort` and `Improved_sort` in the scale of data my laptop allows.  
+   ![alt text](data/execution_time_plot3.png)
+   ![alt text](data/execution_time_boxplot3.png)
+   ![alt text](data/execution_time_regression3.png)
+   
