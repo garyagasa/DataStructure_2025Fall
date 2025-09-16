@@ -33,9 +33,9 @@ int main() {
     std::ofstream outfile("../data/results.csv");
     outfile << "algorithm,parameter,time_us\n";
     
-    int low_bound = 10;
-    int up_bound = 700;
-    int step = 1;
+    int low_bound = 10000;
+    int up_bound = 50000;
+    int step = 1000;
     int repeat_time = 10;
 
     // 测试 Insertion_sort

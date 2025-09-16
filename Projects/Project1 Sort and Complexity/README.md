@@ -104,14 +104,40 @@ figure6: time regression plot and comparison of different algorithm(1000-50000)
    }
    ```
    The key problem is the choice of k.
-   We can try different `k` s.The visualization of the results(`qs_results.csv`) is as follows.
-   ![alt text](data/Figure_1_1.png)
+   We can try different `k` s, for each we experiment for 20 times and get the average time.The visualization of the results(`qs_results.csv`) is as follows.
+   >   ![alt text](data/Figure_1_1.png)
+      *array_length = 50000*
+      ![alt text](data/Figure_1_2.png)
+      *array_length = 10000*
+      ![alt text](data/Figure_1_3.png)
+      *array_length = 5000*
+
    We can find that when `k=120` or so the operation time is the shortest.This is different from the therotical calculation we made above of about `349`.One explanation may be that when we choose `k`, we not only need to consider the performance of two algorithms, but also need to take the number of subproblems we give to quick sort and the extent of sort in our array then using insertion sort.
    We then can set `k=120` to compare our improved sort with other algorithms
 
    #### V.How about Merge Sort?
    We haven't talk about the `Merge sort` yet, since in the experiment we find that in practice the `Merge sort` can't beat the `Insertion sort` , not to say `Quick_sort` and `Improved_sort` in the scale of data my laptop allows.  
+   - **(10-700)**
    ![alt text](data/execution_time_plot3.png)
    ![alt text](data/execution_time_boxplot3.png)
    ![alt text](data/execution_time_regression3.png)
+   - **(10000-50000)**
+   ![alt text](data/execution_time_plot4.png)
+   ![alt text](data/execution_time_boxplot4.png)
+   ![alt text](data/execution_time_regression4.png)
    
+The main reason is that Merge_sort_1 and Merge_sort_2 functions have a significant performance overhead due to frequent memory allocation and copying.
+
+The Problem with Memory Allocation
+Creating a new vector on the heap (std::vector) is a costly operation. It involves:
+
+- Requesting memory from the operating system, which is a time-consuming task.
+
+- Copying the data from one location to another.
+
+In a highly recursive algorithm like merge sort, this overhead adds up quickly. While the time complexity of your algorithm remains $O(N log N)$ from a theoretical standpoint, the constant factor is very large due to these inefficient operations.
+
+In contrast, other algorithms in your code, like Insertion_sort and Quick_sort_naive, operate in-place or with minimal extra space.
+
+#### VI.Artificial Intelligence Usage Clarification
+Some of the visualization part scripts codes(`run_benchmarks.py`, `visualize_results.py`) are written by `ChatGpt` and `Gemini`, with revision of my own.All the implementation of sort algorithms is written by me manualy.All experiments were conducted on my own.
