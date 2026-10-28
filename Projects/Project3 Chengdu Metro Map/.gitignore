@@ -1,0 +1,25 @@
+# Build outputs
+build/
+dist/
+*.o
+*.a
+*.so
+*.exe
+*.dll
+
+# Dependencies
+node_modules/
+.venv/
+venv/
+__pycache__/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS files
+Thumbs.db

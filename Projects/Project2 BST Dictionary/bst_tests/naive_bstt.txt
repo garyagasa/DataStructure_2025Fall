@@ -1,0 +1,147 @@
+----------------------Testing Tree Insertion----------------------
+--------------------------------------------------------------
+10(root)
+2(l, 10)        12(r, 10)
+1(l, 2) 4(r, 2) 11(l, 12)
+3(l, 4) 6(r, 4)
+5(l, 6) 8(r, 6)
+7(l, 8) 9(r, 8)
+--------------------------------------------------------------
+level=0 child=0 10
+level=1 child=0 2
+level=2 child=0 1
+level=3 child=0 null
+level=3 child=1 null
+level=2 child=1 4
+level=3 child=0 3
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 6
+level=4 child=0 5
+level=5 child=0 null
+level=5 child=1 null
+level=4 child=1 8
+level=5 child=0 7
+level=6 child=0 null
+level=6 child=1 null
+level=5 child=1 9
+level=6 child=0 null
+level=6 child=1 null
+level=1 child=1 12
+level=2 child=0 11
+level=3 child=0 null
+level=3 child=1 null
+level=2 child=1 null
+--------------------------------------------------------------
+韩国瑜(root)
+发财(l, 韩国瑜) 高雄(r, 韩国瑜)
+发大财(l, 发财) 我(r, 发财)
+出征(l, 发大财) 就要(l, 我)     秃子(r, 我)
+月亮(l, 秃子)   跟着(r, 秃子)
+走(l, 跟着)
+--------------------------------------------------------------
+level=0 child=0 韩国瑜
+level=1 child=0 发财
+level=2 child=0 发大财
+level=3 child=0 出征
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 null
+level=2 child=1 我
+level=3 child=0 就要
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 秃子
+level=4 child=0 月亮
+level=5 child=0 null
+level=5 child=1 null
+level=4 child=1 跟着
+level=5 child=0 走
+level=6 child=0 null
+level=6 child=1 null
+level=5 child=1 null
+level=1 child=1 高雄
+level=2 child=0 null
+level=2 child=1 null
+--------------------------------------------------------------
+calm, 冷静(root)
+and, 且(l, calm)        keep, 保持(r, calm)
+carry, 继续(l, keep)    on, 前行(r, keep)
+don't, 不要(r, carry)   night, 夜(l, on)
+dark, 良(l, don't)      go, 走(r, don't)
+gentle, 温和(l, go)     into, 进(r, go)
+--------------------------------------------------------------
+level=0 child=0 calm
+level=1 child=0 and
+level=2 child=0 null
+level=2 child=1 null
+level=1 child=1 keep
+level=2 child=0 carry
+level=3 child=0 null
+level=3 child=1 don't
+level=4 child=0 dark
+level=5 child=0 null
+level=5 child=1 null
+level=4 child=1 go
+level=5 child=0 gentle
+level=6 child=0 null
+level=6 child=1 null
+level=5 child=1 into
+level=6 child=0 null
+level=6 child=1 null
+level=2 child=1 on
+level=3 child=0 night
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 null
+----------------------Testing Tree Searching----------------------
+calm and carry
+-------------------------Testing Tree Deletion------------------
+--------------------------------------------------------------
+8(root)
+4(l, 8) 10(r, 8)
+2(l, 4) 6(r, 4) 9(l, 10)        12(r, 10)
+1(l, 2) 3(r, 2) 5(l, 6) 7(r, 6) 11(l, 12)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+4(l, 8) 10(r, 8)
+2(l, 4) 6(r, 4) 9(l, 10)        12(r, 10)
+1(l, 2) 5(l, 6) 7(r, 6) 11(l, 12)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+4(l, 8) 10(r, 8)
+1(l, 4) 6(r, 4) 9(l, 10)        12(r, 10)
+5(l, 6) 7(r, 6) 11(l, 12)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+4(l, 8) 10(r, 8)
+1(l, 4) 6(r, 4) 12(r, 10)
+5(l, 6) 7(r, 6) 11(l, 12)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+5(l, 8) 10(r, 8)
+1(l, 5) 6(r, 5) 12(r, 10)
+7(r, 6) 11(l, 12)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+5(l, 8) 12(r, 8)
+1(l, 5) 6(r, 5) 11(l, 12)
+7(r, 6)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root)
+5(l, 8) 12(r, 8)
+1(l, 5) 6(r, 5)
+7(r, 6)
+--------------------------------------------------------------
+--------------------------------------------------------------
+12(root)
+5(l, 12)
+1(l, 5) 6(r, 5)
+7(r, 6)
+--------------------------------------------------------------

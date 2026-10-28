@@ -1,0 +1,141 @@
+----------------------Testing Tree Insertion----------------------
+--------------------------------------------------------------
+8(root, BLACK)
+4(l, 8, RED)    10(r, 8, RED)
+2(l, 4, BLACK)  6(r, 4, BLACK)  9(l, 10, BLACK) 12(r, 10, BLACK)
+1(l, 2, RED)    3(r, 2, RED)    5(l, 6, RED)    7(r, 6, RED)    11(l, 12, RED)
+--------------------------------------------------------------
+level=0 child=0 8(BLACK)
+level=1 child=0 4(RED)
+level=2 child=0 2(BLACK)
+level=3 child=0 1(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 3(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=2 child=1 6(BLACK)
+level=3 child=0 5(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 7(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=1 child=1 10(RED)
+level=2 child=0 9(BLACK)
+level=3 child=0 null
+level=3 child=1 null
+level=2 child=1 12(BLACK)
+level=3 child=0 11(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 null
+--------------------------------------------------------------
+我(root, BLACK)
+发财(l, 我, BLACK)      韩国瑜(r, 我, BLACK)
+发大财(l, 发财, BLACK)  就要(r, 发财, BLACK)    秃子(l, 韩国瑜, RED)    高雄(r, 韩国瑜, BLACK)
+出征(l, 发大财, RED)    月亮(l, 秃子, BLACK)    跟着(r, 秃子, BLACK)
+走(l, 跟着, RED)
+--------------------------------------------------------------
+level=0 child=0 我(BLACK)
+level=1 child=0 发财(BLACK)
+level=2 child=0 发大财(BLACK)
+level=3 child=0 出征(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 null
+level=2 child=1 就要(BLACK)
+level=3 child=0 null
+level=3 child=1 null
+level=1 child=1 韩国瑜(BLACK)
+level=2 child=0 秃子(RED)
+level=3 child=0 月亮(BLACK)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 跟着(BLACK)
+level=4 child=0 走(RED)
+level=5 child=0 null
+level=5 child=1 null
+level=4 child=1 null
+level=2 child=1 高雄(BLACK)
+level=3 child=0 null
+level=3 child=1 null
+--------------------------------------------------------------
+don't, 不要(root, BLACK)
+calm, 冷静(l, don't, RED)       keep, 保持(r, don't, RED)
+and, 且(l, calm, BLACK) carry, 继续(r, calm, BLACK)     go, 走(l, keep, BLACK)  on, 前行(r, keep, BLACK)
+dark, 良(r, carry, RED) gentle, 温和(l, go, RED)        into, 进(r, go, RED)    night, 夜(l, on, RED)
+--------------------------------------------------------------
+level=0 child=0 don't(BLACK)
+level=1 child=0 calm(RED)
+level=2 child=0 and(BLACK)
+level=3 child=0 null
+level=3 child=1 null
+level=2 child=1 carry(BLACK)
+level=3 child=0 null
+level=3 child=1 dark(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=1 child=1 keep(RED)
+level=2 child=0 go(BLACK)
+level=3 child=0 gentle(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 into(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=2 child=1 on(BLACK)
+level=3 child=0 night(RED)
+level=4 child=0 null
+level=4 child=1 null
+level=3 child=1 null
+----------------------Testing Tree Searching----------------------
+calm and carry
+-------------------------Testing Tree Deletion------------------
+--------------------------------------------------------------
+8(root, BLACK)
+4(l, 8, RED)    10(r, 8, RED)
+2(l, 4, BLACK)  6(r, 4, BLACK)  9(l, 10, BLACK) 12(r, 10, BLACK)
+1(l, 2, RED)    3(r, 2, RED)    5(l, 6, RED)    7(r, 6, RED)    11(l, 12, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+4(l, 8, RED)    10(r, 8, RED)
+2(l, 4, BLACK)  6(r, 4, BLACK)  9(l, 10, BLACK) 12(r, 10, BLACK)
+1(l, 2, RED)    5(l, 6, RED)    7(r, 6, RED)    11(l, 12, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+4(l, 8, RED)    10(r, 8, RED)
+1(l, 4, BLACK)  6(r, 4, BLACK)  9(l, 10, BLACK) 12(r, 10, BLACK)
+5(l, 6, RED)    7(r, 6, RED)    11(l, 12, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+4(l, 8, RED)    11(r, 8, RED)
+1(l, 4, BLACK)  6(r, 4, BLACK)  10(l, 11, BLACK)        12(r, 11, BLACK)
+5(l, 6, RED)    7(r, 6, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+5(l, 8, RED)    11(r, 8, RED)
+1(l, 5, BLACK)  6(r, 5, BLACK)  10(l, 11, BLACK)        12(r, 11, BLACK)
+7(r, 6, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+5(l, 8, RED)    11(r, 8, BLACK)
+1(l, 5, BLACK)  6(r, 5, BLACK)  12(r, 11, RED)
+7(r, 6, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+8(root, BLACK)
+5(l, 8, RED)    12(r, 8, BLACK)
+1(l, 5, BLACK)  6(r, 5, BLACK)
+7(r, 6, RED)
+--------------------------------------------------------------
+--------------------------------------------------------------
+5(root, BLACK)
+1(l, 5, BLACK)  7(r, 5, RED)
+6(l, 7, RED)    12(r, 7, BLACK)
+--------------------------------------------------------------
